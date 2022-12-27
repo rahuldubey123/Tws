@@ -1,52 +1,50 @@
-.App {
+section {
+  height: 100%;
+}
+
+section {
+  color: #fff;
   font-family: sans-serif;
+  font-size: 1.25rem;
+  line-height: 150%;
   text-align: center;
+  text-shadow: 0 2px 2px #b6701e;
+}
+
+div {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+h1 {
+  font-size: 1.75rem;
+  margin: 0 0 0.75rem 0;
+}
+
+/* Pattern styles */
+.container {
+  display: flex;
+}
+
+.left-half {
+  background-color: #ff9e2c;
+  flex: 1;
+  padding: 1rem;
+}
+
+.right-half {
+  background-color: #b6701e;
+  flex: 1;
+  padding: 1rem;
 }
 table{
-  border: 1px solid black;
+  border: 4px solid black;
 }
 td{
   border: 2px solid black;
   padding: 10px;
 }
 th{
-  border: 2px solid black;
+  border: 3px solid black;
   padding: 10px;
-}
-.main{
-  min-height: 100px;
-width: 90%;
-margin: 20% auto;
-display: grid;
-grid-template-columns: 400px 700px;
-}
-body{
-  background-color: greenyellow;
-}
-label{
-  margin-right: 20px;
-  padding: 20px;
-  font-weight: bolder;
-}
-input{
-  display: grid;
-  padding: 7px;
-  background-color: lightblue;
-  border-radius: 10px;
-  margin: 10px;
-}
-#btn1{
-  background-color:red;
-  color: black;
-  font-weight:bolder;
-  border: 2px solid black;
-} 
-select{
- border-radius:  10px;
- padding: 10px;
- background-color:lightblue;
-}
-table{
-  padding: 20px;
-
-}
