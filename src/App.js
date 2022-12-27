@@ -1,52 +1,63 @@
 import "./styles.css";
-import React, { useState } from "react";
+import React, {useState} from 'react';
 
-export default function App() {
-  const [fname, setFame] = useState("");
-  const [lname, setLame] = useState("");
-  const [uname, setUame] = useState("");
-  const [phone, setPhone] = useState();
-  const [email, setEmail] = useState("");
-  const [expfrom, setExpfrom] = useState();
-  const [expto, setExpto] = useState();
-  const [desc, setDesc] = useState("");
-  const [skill, setSkill] = useState("");
-  var exp;
 
-  const subfname = (e) => {
-    setFame(e.target.value);
-  };
-  const sublname = (e) => {
-    setLame(e.target.value);
-  };
-  const subuname = (e) => {
-    setUame(e.target.value);
-  };
-  const subphone = (e) => {
-    setPhone(e.target.value);
-  };
-  const subemail = (e) => {
-    setEmail(e.target.value);
-  };
-  const subexp1 = (e) => {
-    setExpfrom(e.target.value);
-  };
-  const subexp2 = (e) => {
-    setExpto(e.target.value);
-  };
-  const subdesc = (e) => {
+function App() {
+  const [fname , setFname] = useState('');
+  const [lname , setLname] = useState('');
+  const [uname , setUname] = useState('');
+  const [phoneNo , setPhoneNo] = useState('');
+  const [email , setEmail] = useState('');
+  const [fromDate , setFromDate] = useState('');
+  const [lastDate , setLastDate] = useState('');
+  const [desc , setDesc] = useState('');
+  const [skill , setSkill] = useState('');
+  
+  
+  
+	const handleChange =(e)=>{
+    setFname(e.target.value);
+	}
+  
+	const handleLastChange =(e)=>{
+    setLname(e.target.value);
+	}
+  
+	const handleUserChange =(e)=>{
+    setUname(e.target.value);
+	}
+  
+  const handleEmailChange =(e)=>{
+  setEmail(e.target.value);
+  }
+
+	const handlePhoneChange =(e)=>{
+    setPhoneNo(e.target.value);
+	}
+
+	const handlefromDChange =(e)=>{
+    setFromDate(e.target.value);
+	}
+
+	const handlelastDChange =(e)=>{
+    setLastDate(e.target.value);
+	}
+
+	const handleDescChange =(e)=>{
     setDesc(e.target.value);
-  };
-  const subskill = (e) => {
-    setSkill(e.target.value);
-  };
+	}
 
-  const submit = () => {
-    var date1 = new Date(expfrom);
-    var date2 = new Date(expto);
+	const handleSkillDChange =(e)=>{
+    setSkill(e.target.value);
+	}
+
+
+  const handleSubmit=(e)=>{
+    var date1 = new Date(fromDate);
+    var date2 = new Date(lastDate);
     var Difference_In_Time = date2.getTime() - date1.getTime();
     var Difference_In_Days = Difference_In_Time / (1000 * 3600 * 24);
-    exp = Math.floor(Difference_In_Days / 30);
+    var exp = Math.floor(Difference_In_Days / 30);
     var data = document.getElementById("data");
     data.innerHTML = `<td id="name"></td>`;
     data.innerHTML = data.innerHTML + `<td id="user" ></td>`;
@@ -58,108 +69,85 @@ export default function App() {
 
     document.getElementById("name").innerHTML = fname + " " + lname;
     document.getElementById("user").innerHTML = uname;
-    document.getElementById("phone").innerHTML = phone;
+    document.getElementById("phone").innerHTML = phoneNo;
     document.getElementById("email").innerHTML = email;
     document.getElementById("skill").innerHTML = skill;
     document.getElementById("exp").innerHTML = exp + " Month";
     document.getElementById("desc").innerHTML = desc;
-  };
+  	e.preventDefault();
+  }
+  
+return (
+  <>
+    <section class="container">
+      <div class="left-half">
+        <form onSubmit={(e) => {handleSubmit(e)}}>
+        <label>First Name: </label>
+        <input type="text" value={fname} 
+        required onChange={(e) => {handleChange(e)}} /><br/>
+      
+        <label>Last Name: </label>
+        <input type="text" value={lname} 
+        required onChange={(e) => {handleLastChange(e)}} /><br/>
+      
+        <label>User Name: </label>
+        <input type="text" value={uname} 
+        required onChange={(e) => {handleUserChange(e)}} /><br/>
+        
+        <label>Phone No: </label>
+        <input type="text" value={phoneNo} 
+        required onChange={(e) => {handlePhoneChange(e)}} maxlength="10" /><br/>
+        
+        <label>Email Id: </label>
+        <input type="text" value={email} 
+        required onChange={(e) => {handleEmailChange(e)}} /><br/>
+        
+        <label>SKILLS: </label>
+        <select onChange={(e) => {handleSkillDChange(e)}} value={skill}>
+            <option selected disabled hidden>Choose Here</option>
+            <option>HTML</option>
+            <option>CSS</option>
+            <option>REACT</option>
+            <option>TYPESCRIPT</option>
+            <option>CSS3</option>
+            <option>JAVASCRIPT</option>
+            <option>JQUERY</option>
+        </select><br/>
+        
+        <label>Total Experience: </label>
+        <input type="date" value={fromDate} name="Joing Date" 
+        onChange={(e) => {handlefromDChange(e)}} />
+        <input type="date" value={lastDate} name="Exit Date" 
+        onChange={(e) => {handlelastDChange(e)}} /><br/>
+        
+        <label>Description: </label>
+        <input type="text" value={desc} 
+        required onChange={(e) => {handleDescChange(e)}} maxLength="250"/><br/>
+        
+        <input type="submit" value="Submit"/>
+      </form>
+      </div>
 
-  return (
-    <div className="main">
-      <section>
-        <label for="firstName">First Name: </label>
-        <input
-          type="text"
-          id="firstName"
-          placeholder="Enter First Name"
-          onChange={subfname}
-          required
-        />
-        <br></br>
-        <label for="lastName">Last Name: </label>
-        <input
-          type="text"
-          id="lastName"
-          placeholder="Enter Last Name"
-          onChange={sublname}
-          required
-        />
-        <br></br>
-        <label for="userName">User Name: </label>
-        <input
-          type="text"
-          id="userName"
-          placeholder="Enter User Name"
-          maxlength="10"
-          onChange={subuname}
-          required
-        />
-        <br></br>
-        <label for="phoneNo">Phone No. </label>
-        <input
-          type="text"
-          id="phoneNo"
-          placeholder="Enter Your Number"
-          maxlength="10"
-          onChange={subphone}
-          required
-        />
-        <br></br>
-        <label for="emailAddress">Email Id: </label>
-        <input
-          type="text"
-          id="emailAddress"
-          placeholder="Enter Email Id"
-          onChange={subemail}
-          required
-        />
-        <br />
-        <label for="emailAddress">SKILLS: </label><br/>
-        <select onChange={subskill}>
-          <option selected disabled hidden>Choose Here</option>
-          <option>HTML</option>
-          <option>CSS</option>
-          <option>REACT</option>
-          <option>TYPESCRIPT</option>
-          <option>CSS3</option>
-          <option>JAVASCRIPT</option>
-          <option>JQUERY</option>
-        </select>
-        <br></br>
-        <label for="totalExprience">Total Experience: </label>
-        <input type="date" id="fromDate" name="Joing Date" onChange={subexp1} />
-        <input type="date" id="lastDate" name="Exit Date" onChange={subexp2} />
-        <br></br>
-        <label for="descritiOn">Description: </label>
-        <input
-          type="text"
-          id="descritiOn"
-          placeholder="Enter Description"
-          maxlength="250"
-          onChange={subdesc}
-        />
-        <br></br>
-
-        <input type="button" id="btn1" value="Submit button" onClick={submit} />
-       
-      </section>
-      <section>
+      <div class="right-half">
         <div id="display">
-          <table>
-            <tr>
-              <th>Name</th>
-              <th>userName</th>
-              <th>PhoneNo</th>
-              <th>Email</th>
-              <th>SKILLS</th>
-              <th>EXP</th>
-              <th>DESCR</th>
-            </tr>
-            <tr id="data"></tr>
-          </table>
+            <table>
+              <tr>
+                <th>Name: </th>
+                <th>userName: </th>
+                <th>PhoneNo. </th>
+                <th>Email Id: </th>
+                <th>SKILLS: </th>
+                <th>Total Experience: </th>
+                <th>Description: </th>
+              </tr>
+              <tr id="data"></tr>
+            </table>
         </div>
-      </section>
-    </div>
+      </div>
+    </section>
+  </>
   );
 }
+
+export default App;
+
