@@ -1,4 +1,6 @@
+import "./styles.css";
 import React, { useState } from "react";
+
 export default function App() {
   const [fname, setFame] = useState("");
   const [lname, setLame] = useState("");
